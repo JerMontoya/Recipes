@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import maglass from "../assets/maglass.svg";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Search = () => {
   const location = useLocation();
@@ -14,10 +14,10 @@ const Search = () => {
   const [searchTerm, setSearchTerm] = useState(query);
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-        handleSearch();
+    if (event.key === "Enter") {
+      handleSearch();
     }
-  }
+  };
 
   useEffect(() => {
     setSearchTerm(query);
@@ -42,11 +42,11 @@ const Search = () => {
     fetchRecipes();
   }, [query]);
 
-    const handleSearch = () => {
-        if (searchTerm.trim()) {
-            navigate(`?q=${searchTerm}`);
-        }
-    };
+  const handleSearch = () => {
+    if (searchTerm.trim()) {
+      navigate(`?q=${searchTerm}`);
+    }
+  };
 
   return (
     <div>
@@ -64,7 +64,10 @@ const Search = () => {
             onKeyDown={handleKeyDown}
             className="text-3xl px-4 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          <button onClick={handleSearch} className="mx-2 bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600 text-white">
+          <button
+            onClick={handleSearch}
+            className="mx-2 bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600 text-white"
+          >
             <img src={maglass} alt="" className="h-10 w-10 invert" />
           </button>
         </div>
@@ -78,6 +81,7 @@ const Search = () => {
         {recipes.length > 0 ? (
           recipes.map((meal) => (
             <div
+              onClick={() => navigate(`/meal/${meal.idMeal}`)}
               key={meal.idMeal}
               className="bg-white rounded-lg shadow p-4 flex flex-col items-center"
             >
@@ -86,7 +90,7 @@ const Search = () => {
                 alt={meal.strMeal}
                 className="rounded-md mb-2 w-full h-48 object-cover"
               />
-              <h3 className="text-lg font-bold text-gray-300">
+              <h3 className="text-lg font-bold text-gray-400">
                 {meal.strMeal}
               </h3>
             </div>
