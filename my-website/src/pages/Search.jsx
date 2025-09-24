@@ -58,7 +58,7 @@ const Search = () => {
         <div className="flex">
           <input
             type="text"
-            placeholder="Search recipes..."
+            placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -73,17 +73,16 @@ const Search = () => {
         </div>
       </div>
       <div className="flex justify-between mx-6 mt-6">
-        <h2 className="text-2xl font-semibold mb-4">Search Results:</h2>
-        <h2>Filter By</h2>
+        <h2 className="text-2xl font-semibold mb-4 mx-10">Search Results:</h2>
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-3 gap-6 mx-10">
         {recipes.length > 0 ? (
           recipes.map((meal) => (
             <div
               onClick={() => navigate(`/meal/${meal.idMeal}`)}
               key={meal.idMeal}
-              className="bg-white rounded-lg shadow p-4 flex flex-col items-center"
+              className="bg-white rounded-lg shadow p-4 flex flex-col items-center transition-transform duration-200 hover:scale-105 cursor-pointer"
             >
               <img
                 src={meal.strMealThumb}

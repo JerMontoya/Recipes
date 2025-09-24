@@ -44,25 +44,41 @@ const Card = () => {
           {meal.strMeal}
         </h1>
         <p className="text-lg text-gray-700 mb-4">
-          <strong>Category:</strong>
+          <strong>Category: </strong>
           {meal.strCategory}
         </p>
         <p className="text-lg text-gray-700 mb-4">
-          <strong>Area:</strong>
+          <strong>Area: </strong>
           {meal.strArea}
         </p>
         <p className="text-lg text-gray-700 mb-4">
-          <strong>Instructions:</strong>
+          <strong>Ingredients:</strong>
+          <ul className="list-disc list-inside">
+            {Array.from({ length: 20 }, (_, i) => i + 1) // [1,2, ..., 20]
+              .map((num) => {
+                const ingredient = meal[`strIngredient${num}`];
+                const measure = meal[`strMeasure${num}`];
+
+                if (
+                  !ingredient ||
+                  ingredient === "null" ||
+                  ingredient.trim() === ""
+                )
+                  return null;
+
+                return (
+                  <li key={num}>
+                    {measure && measure !== "null" ? measure + " " : ""}
+                    {ingredient}
+                  </li>
+                );
+              })}
+          </ul>
+        </p>
+        <p className="text-lg text-gray-700 mb-4">
+          <strong>Instructions: </strong>
           {meal.strInstructions}
         </p>
-        <a
-          href={meal.strYouTube}
-          target="blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline"
-        >
-          Watch on YouTube
-        </a>
       </div>
     </div>
   );

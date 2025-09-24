@@ -10,14 +10,14 @@ const Navbar = () => {
         <p className="text-xl font-bold text-blue-800">Recipe Finder</p>
       </div>
       <div className="space-x-4">
-        {location.pathname !== "/search" && (
-          <Link to="/search" className="hover:text-blue-500">
-            Search Recipes
-          </Link>
-        )}
         {location.pathname !== "/" && (
           <Link to="/" className="hover:text-blue-500">
             Home
+          </Link>
+        )}
+        {location.pathname !== "/search" && (
+          <Link to="/search" className="hover:text-blue-500">
+            Search Recipes
           </Link>
         )}
         <button className="text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 hover:cursor-not-allowed">
