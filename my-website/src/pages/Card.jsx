@@ -18,10 +18,10 @@ const Card = () => {
         setTimeout(() => {
           setMeal(data.meals ? data.meals[0] : null);
           setLoading(false);
-        }, 1500);
+        }, 500);
       } catch (err) {
         console.error("Error fetching meal:", err);
-        setTimeout(() => setLoading(false), 1000);
+        setTimeout(() => setLoading(false), 500);
       }
     }
     fetchMeal();

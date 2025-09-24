@@ -40,14 +40,14 @@ const Search = () => {
         setTimeout(() => {
           setRecipes(data.meals ? data.meals.slice(0, 6) : []);
           setLoading(false);
-        }, 1500);
+        }, 500);
       } catch (err) {
         console.error("Error fetching recipes:", err);
 
         setTimeout(() => {
           setRecipes([]);
           setLoading(false);
-        }, 1500);
+        }, 500);
       }
     }
 
