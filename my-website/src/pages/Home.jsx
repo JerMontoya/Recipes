@@ -34,7 +34,7 @@ const Home = () => {
         <div className="flex justify-center w-full max-w-3xl mb-2">
           <input
             type="text"
-            placeholder="Search recipes..."
+            placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
